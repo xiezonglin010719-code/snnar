@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 必要权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- 允许前台服务播放媒体音频 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+
+    <!-- 允许前台服务使用麦克风 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+    <!-- 录音权限（已经有，但保留） -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Senar"
+        android:name=".utils.SenarApp"
+        >
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Senar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 今夜报告 -->
+        <activity
+            android:name=".TonightReportActivity"
+            android:exported="false" />
+
+        <!-- 历史报告（按日期） -->
+        <activity
+            android:name=".HistoryReportActivity"
+            android:exported="false" />
+
+
+        <!-- 音频处理服务 -->
+        <service
+            android:name=".AudioProcessingService"
+            android:foregroundServiceType="mediaPlayback|microphone"
+            android:exported="false" />
+
+        <service
+            android:name=".breath.BreathService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <activity android:name=".breath.reports.BreathTonightReportActivity" />
+        <activity android:name=".breath.reports.BreathHistoryReportActivity" />
+
+
+    </application>
+
+</manifest>

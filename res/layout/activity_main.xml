@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 控制按钮 -->
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始诊断"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="停止诊断"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/btnReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看本晚报告"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="历史报告"
+        android:layout_marginTop="8dp"/>
+
+
+    <!-- 状态文本 -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="状态：未开始"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" />
+
+    <!-- 信号质量 + 进度条 -->
+    <TextView
+        android:id="@+id/tvSignalQuality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="信号质量：--"
+        android:textSize="15sp"
+        android:layout_marginTop="12dp" />
+
+    <ProgressBar
+        android:id="@+id/progressSignalQuality"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:max="100"
+        android:progress="0"
+        android:layout_marginTop="4dp"
+        style="?android:attr/progressBarStyleHorizontal" />
+
+    <!-- 上面的呼吸包络 LineChart（30 s 窗口） -->
+    <!-- 呼吸波形图：30s 呼吸包络 LineChart -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chartBreath"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- 翻身 / 伪影 / baseline 状态条（ApneaApp 风格） -->
+    <com.example.senar.BreathStateView
+        android:id="@+id/breathStateBar"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp" />
+
+
+    <!-- 文本诊断报告 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/tvReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="诊断报告将显示在这里"
+            android:textSize="14sp" />
+    </ScrollView>
+
+</LinearLayout>

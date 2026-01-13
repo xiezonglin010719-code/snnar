@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Senar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 你的颜色/字体等自定义 -->
+    </style>
+</resources>
