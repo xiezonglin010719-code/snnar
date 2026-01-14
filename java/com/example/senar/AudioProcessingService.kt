@@ -346,6 +346,7 @@ class AudioProcessingService : Service() {
             runCatching {
                 sessionId = sessionRepo.startSession(
                     streamId = currentStreamId,
+                    personId = currentPersonId,   // ✅ 补上这个
                     diagType = "SONAR"
                 )
                 Log.d(TAG, "Room session switched: sessionId=$sessionId person=$currentPersonId streamId=$currentStreamId")
@@ -472,6 +473,7 @@ class AudioProcessingService : Service() {
             runCatching {
                 sessionId = sessionRepo.startSession(
                     streamId = currentStreamId,
+                    personId = currentPersonId,   // ✅ 补上这个
                     diagType = "SONAR"
                 )
                 Log.d(TAG, "Room session started: sessionId=$sessionId streamId=$currentStreamId person=$currentPersonId")
@@ -480,6 +482,7 @@ class AudioProcessingService : Service() {
                 sessionId = 0L
             }
         }
+
 
         try {
             record.startRecording()

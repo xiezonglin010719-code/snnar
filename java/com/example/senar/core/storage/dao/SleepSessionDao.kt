@@ -67,4 +67,30 @@ interface SleepSessionDao {
         ORDER BY startEpochMs DESC
     """)
     suspend fun listByPerson(personId: String): List<SleepSessionEntity>
+
+
+    // com.example.senar.core.storage.dao.SleepSessionDao
+
+    @Query("""
+    SELECT * FROM sleep_sessions
+    WHERE dayKey >= :startDayKey AND dayKey <= :endDayKey
+    ORDER BY startEpochMs DESC
+""")
+    suspend fun listByDayRange(
+        startDayKey: String,
+        endDayKey: String
+    ): List<SleepSessionEntity>
+
+    @Query("""
+    SELECT * FROM sleep_sessions
+    WHERE personId = :personId
+      AND dayKey >= :startDayKey AND dayKey <= :endDayKey
+    ORDER BY startEpochMs DESC
+""")
+    suspend fun listByPersonAndDayRange(
+        personId: String,
+        startDayKey: String,
+        endDayKey: String
+    ): List<SleepSessionEntity>
+
 }
